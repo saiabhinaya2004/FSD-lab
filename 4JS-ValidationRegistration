@@ -83,7 +83,7 @@
 
     // Username Validation
     const username = document.getElementById("username").value;
-    const usernameRegex = /^[a-zA-Z][a-zA-Z0-9]{7,15}$/;
+    const usernameRegex = /^(?=.*\d)[a-zA-Z][a-zA-Z0-9]{7,15}$/;
     if (!usernameRegex.test(username)) {
       errorMessage += "Username must be 8-16 characters, start with a letter, and contain only letters and numbers.\n";
     }
