@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Rating System</title>
+
+    <!-- Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- CSS Styling -->
+    <style>
+        .container {
+            border: 2px solid green;
+            padding: 1rem;
+            max-width: 300px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .star-rating {
+            direction: rtl;
+        }
+
+        .star-rating input {
+            display: none;
+        }
+
+        .star-rating label {
+            font-size: 4rem;
+            cursor: pointer;
+            color: grey;
+            display: inline-block;
+        }
+
+        /* Highlight stars on hover */
+        .star-rating label:hover,
+        .star-rating label:hover ~ label {
+            color: black;
+        }
+
+        /* Highlight selected stars */
+        .star-rating input:checked ~ label {
+            color: aqua;
+        }
+
+        .rating-text {
+            font-size: 1.2rem;
+            color: darkblue;
+            margin-top: 10px;
+        }
+
+        .image-display {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Star Rating System</h1>
+        <div class="star-rating">
+            <input type="radio" name="rating" id="star5" value="5">
+            <label for="star5">&#9733;</label>
+            
+            <input type="radio" name="rating" id="star4" value="4">
+            <label for="star4">&#9733;</label>
+            
+            <input type="radio" name="rating" id="star3" value="3">
+            <label for="star3">&#9733;</label>
+            
+            <input type="radio" name="rating" id="star2" value="2">
+            <label for="star2">&#9733;</label>
+            
+            <input type="radio" name="rating" id="star1" value="1">
+            <label for="star1">&#9733;</label>
+        </div>
+
+        <!-- Static Image Below the Stars -->
+        <img id="ratingImage" src="https://via.placeholder.com/100/FFFF00/000000?text=Good" alt="Rating Image" class="image-display">
+
+        <!-- Display Rating Text -->
+        <div class="rating-text" id="ratingText"></div>
+    </div>
+
+    <!-- jQuery Script -->
+    <script>
+        $(document).ready(function() {
+            $('.star-rating input').click(function() {
+                var rating = $(this).val(); // Get the selected value
+
+                // Set the rating text
+                $("#ratingText").text("You rated this " + rating + " star(s)!");
+            });
+        });
+    </script>
+
+</body>
+</html>
