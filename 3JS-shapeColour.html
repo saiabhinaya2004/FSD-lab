@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>change on button click</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    #block {
+      height: 100px;
+      width: 100px;
+      background-color: blue;
+    }
+  </style>
+</head>
+<body>
+  <div id="block"></div>
+  <br>
+  <button id="button" onclick="change()">Click</button>
+
+  <script>
+    function change() {
+      const block = document.getElementById("block");
+      block.style.backgroundColor = block.style.backgroundColor === 'red' ? 'blue' : 'red';
+      block.style.borderRadius = block.style.borderRadius === '50%' ? '0%' : '50%';
+    }
+  </script>
+</body>
+</html>
