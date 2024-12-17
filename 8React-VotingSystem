@@ -1,0 +1,54 @@
+import React, { useState } from 'react';
+
+import dangal from './dangal.jpg';
+import jersey from './jersey.jpg';
+
+function VotingSystem() {
+  const [dangalVotes, setDangalVotes] = useState(0);
+  const [jerseyVotes, setJerseyVotes] = useState(0);
+  const [winner, setWinner] = useState("");
+
+  const handleDangalLike = () => setDangalVotes(dangalVotes + 1);
+  const handleDangalDislike = () => setDangalVotes(dangalVotes - 1);
+  const handleJerseyLike = () => setJerseyVotes(jerseyVotes + 1);
+  const handleJerseyDislike = () => setJerseyVotes(jerseyVotes - 1);
+
+  const handleSubmit = () => {
+    if (dangalVotes > jerseyVotes) {
+      setWinner(`Dangal has won by ${dangalVotes - jerseyVotes} votes!`);
+    } else if (jerseyVotes > dangalVotes) {
+      setWinner(`Jersey has won by ${jerseyVotes - dangalVotes} votes!`);
+    } else {
+      setWinner("It's a tie!");
+    }
+  };
+
+  return (
+    <div style={{ textAlign: 'center', padding: '20px' }}>
+      <h1>Vote for Your Favorite Movie</h1>
+      <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', marginBottom: '20px' }}>
+        <div>
+          <h3>Dangal</h3>
+          <img src={dangal} alt="Dangal" style={{ width: '200px', borderRadius: '10px' }} />
+          <div>
+            <button onClick={handleDangalLike}>Like ({dangalVotes})</button>
+            <button onClick={handleDangalDislike}>Dislike</button>
+          </div>
+        </div>
+
+        <div>
+          <h3>Jersey</h3>
+          <img src={jersey} alt="Jersey" style={{ width: '200px', borderRadius: '10px' }} />
+          <div>
+            <button onClick={handleJerseyLike}>Like ({jerseyVotes})</button>
+            <button onClick={handleJerseyDislike}>Dislike</button>
+          </div>
+        </div>
+      </div>
+      <button onClick={handleSubmit}>Submit</button>
+      <h2>{winner}</h2>
+    </div>
+  );
+}
+
+export default VotingSystem;
