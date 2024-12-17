@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration Validation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    #registrationForm {
+      background-color: #fff;
+      box-shadow: #ccc;
+      border-radius: 8px;
+      width: 300px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    label {
+      margin-bottom: 8px;
+      align-self: flex-start;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Registration Form</h1>
+<form id="registrationForm">
+  <label for="username">Username</label>
+  <input type="text" id="username" name="username" required>
+
+  <label for="password">Password</label>
+  <input type="password" id="password" name="password" required>
+
+  <label for="dob">Date of Birth</label>
+  <input type="text" id="dob" name="dob" placeholder="dd-mm-yyyy" required>
+
+  <label for="contact">Contact Number</label>
+  <input type="text" id="contact" name="contact" required>
+
+  <label for="email">Mail-Id</label>
+  <input type="email" id="email" name="email" required>
+
+  <button type="button" onclick="validateForm()">Register</button>
+</form>
+
+<script>
+  function validateForm() {
+    let errorMessage = "";
+
+    // Username Validation
+    const username = document.getElementById("username").value;
+    const usernameRegex = /^[a-zA-Z][a-zA-Z0-9]{7,15}$/;
+    if (!usernameRegex.test(username)) {
+      errorMessage += "Username must be 8-16 characters, start with a letter, and contain only letters and numbers.\n";
+    }
+
+    // Password Validation
+    const password = document.getElementById("password").value;
+    const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[^a-zA-Z\d]).{8,16}$/;
+    if (!passwordRegex.test(password)) {
+      errorMessage += "Password must be 8-16 characters, contain letters, at least 1 number, and exactly 1 special character.\n";
+    }
+
+    // Date of Birth Validation
+    const dob = document.getElementById("dob").value;
+    const dobRegex = /^\d{2}-\d{2}-\d{4}$/;
+    if (!dobRegex.test(dob)) {
+      errorMessage += "Date of Birth must be in the format dd-mm-yyyy.\n";
+    }
+
+    // Contact Number Validation
+    const contact = document.getElementById("contact").value;
+    const contactRegex = /^\d+$/;
+    if (!contactRegex.test(contact)) {
+      errorMessage += "Contact Number must contain only numbers.\n";
+    }
+
+    // Email Validation
+    const email = document.getElementById("email").value;
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@(gmail|hotmail|rediffmail)\.com$/;
+    if (!emailRegex.test(email)) {
+      errorMessage += "Email must end with @gmail.com, @hotmail.com, or @rediffmail.com.\n";
+    }
+
+    if (errorMessage) {
+      alert(errorMessage);
+    } else {
+      alert("Registration successful!");
+      // Optionally submit the form here if validations pass
+      document.getElementById("registrationForm").submit();
+    }
+  }
+</script>
+
+</body>
+</html>
