@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+</head>
+<body>
+    <h1>Registration Form</h1>
+    <form action="/submit" method="post">
+        <label for="username">User Name:</label>
+        <input type="text" id="username" name="username" >
+        <br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" >
+        <br><br>
+
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob" >
+        <br><br>
+
+        <label>Gender:</label>
+        <input type="radio" id="male" name="gender" value="male" required>
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="gender" value="female" required>
+        <label for="female">Female</label>
+        <input type="radio" id="other" name="gender" value="other" required>
+        <label for="other">Other</label>
+        <br><br>
+
+        <label for="email">Mail ID:</label>
+        <input type="email" id="email" name="email" required>
+        <br><br>
+
+        <label for="contact">Contact Number:</label>
+        <input type="tel" id="contact" name="contact" pattern="[0-9]{10}" required>
+        <br><br>
+
+        <label for="address">Address:</label>
+        <textarea id="address" name="address" rows="4" cols="50" required></textarea>
+        <br><br>
+	
+	    <label for="hobbies">Hobbies:</label>
+        <input type="text" id="hobbies" name="hobbies" required>
+
+        <br><br>
+
+	    <label for="insub">Intrested Subjects:</label>
+        <select name="insub" id="insub">
+            <option value="ai">AI</option>
+            <option value="ml">ML</option>
+            <option value="fsd">FSD</option>
+            <option value="cn">CN</option>
+            <option value="cc">CC</option>
+        </select>
+        <br><br>
+
+
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
